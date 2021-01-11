@@ -1,0 +1,167 @@
+\section{Пример работы}
+
+В качестве основы будем использовать код лабораторной \textnumero{2}. Запустим утилиту командой strace ./a.out <test3
+
+\begin{verbatim}
+
+execve("./a.out", ["./a.out"], 0x7ffffcae2a10 /* 19 vars */) = 0
+brk(NULL)                               = 0x7ffff6a9d000
+arch_prctl(0x3001 /* ARCH_??? */, 0x7ffffdc43220) = -1 EINVAL (Invalid argument)
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=43044, ...}) = 0
+mmap(NULL, 43044, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fa4ae8f5000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\360q\2\0\0\0\0\0"..., 832) = 832
+pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+pread64(3, "\4\0\0\0\20\0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0", 32, 848) = 32
+pread64(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0\363\377?\332\200\270\27\304d\245n\355Y\377\t\334"..., 68, 880) = 68
+fstat(3, {st_mode=S_IFREG|0755, st_size=2029224, ...}) = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa4ae930000
+pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+pread64(3, "\4\0\0\0\20\0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0", 32, 848) = 32
+pread64(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0\363\377?\332\200\270\27\304d\245n\355Y\377\t\334"..., 68, 880) = 68
+mmap(NULL, 2036952, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa4ae700000
+mprotect(0x7fa4ae725000, 1847296, PROT_NONE) = 0
+mmap(0x7fa4ae725000, 1540096, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x25000) = 0x7fa4ae725000
+mmap(0x7fa4ae89d000, 303104, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x19d000) = 0x7fa4ae89d000
+mmap(0x7fa4ae8e8000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1e7000) = 0x7fa4ae8e8000
+mmap(0x7fa4ae8ee000, 13528, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa4ae8ee000
+close(3)                                = 0
+arch_prctl(ARCH_SET_FS, 0x7fa4ae931380) = 0
+mprotect(0x7fa4ae8e8000, 12288, PROT_READ) = 0
+mprotect(0x7fa4ae937000, 4096, PROT_READ) = 0
+mprotect(0x7fa4ae92d000, 4096, PROT_READ) = 0
+munmap(0x7fa4ae8f5000, 43044)           = 0
+read(0, "f", 1)                         = 1
+read(0, "1", 1)                         = 1
+read(0, "\n", 1)                        = 1
+openat(AT_FDCWD, "f1", O_WRONLY|O_TRUNC) = 3
+read(0, "f", 1)                         = 1
+read(0, "2", 1)                         = 1
+read(0, "\n", 1)                        = 1
+openat(AT_FDCWD, "f2", O_WRONLY|O_TRUNC) = 4
+pipe([5, 6])                            = 0
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fa4ae931650) = 69
+close(5)                                = 0
+pipe([5, 7])                            = 0
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fa4ae931650) = 70
+close(5)                                = 0
+read(0, "a", 1)                         = 1
+write(6, "a", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(6, " ", 1)                        = 1
+read(0, "b", 1)                         = 1
+write(6, "b", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(6, " ", 1)                        = 1
+read(0, "c", 1)                         = 1
+write(6, "c", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(6, " ", 1)                        = 1
+read(0, "d", 1)                         = 1
+write(6, "d", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(6, " ", 1)                        = 1
+read(0, "e", 1)                         = 1
+write(6, "e", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(6, " ", 1)                        = 1
+read(0, "f", 1)                         = 1
+write(6, "f", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(6, " ", 1)                        = 1
+read(0, "g", 1)                         = 1
+write(6, "g", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(6, " ", 1)                        = 1
+read(0, "h", 1)                         = 1
+write(6, "h", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(6, " ", 1)                        = 1
+read(0, "i", 1)                         = 1
+write(6, "i", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(6, " ", 1)                        = 1
+read(0, "j", 1)                         = 1
+write(6, "j", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(6, " ", 1)                        = 1
+read(0, "k", 1)                         = 1
+write(6, "k", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(6, " ", 1)                        = 1
+read(0, "l", 1)                         = 1
+write(6, "l", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(6, " ", 1)                        = 1
+read(0, "\n", 1)                        = 1
+write(6, "\n", 1)                       = 1
+read(0, "m", 1)                         = 1
+write(7, "m", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(7, " ", 1)                        = 1
+read(0, "n", 1)                         = 1
+write(7, "n", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(7, " ", 1)                        = 1
+read(0, "o", 1)                         = 1
+write(7, "o", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(7, " ", 1)                        = 1
+read(0, "p", 1)                         = 1
+write(7, "p", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(7, " ", 1)                        = 1
+read(0, "q", 1)                         = 1
+write(7, "q", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(7, " ", 1)                        = 1
+read(0, "r", 1)                         = 1
+write(7, "r", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(7, " ", 1)                        = 1
+read(0, "s", 1)                         = 1
+write(7, "s", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(7, " ", 1)                        = 1
+read(0, "t", 1)                         = 1
+write(7, "t", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(7, " ", 1)                        = 1
+read(0, "u", 1)                         = 1
+write(7, "u", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(7, " ", 1)                        = 1
+read(0, "v", 1)                         = 1
+write(7, "v", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(7, " ", 1)                        = 1
+read(0, "w", 1)                         = 1
+write(7, "w", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(7, " ", 1)                        = 1
+read(0, "x", 1)                         = 1
+write(7, "x", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(7, " ", 1)                        = 1
+read(0, "y", 1)                         = 1
+write(7, "y", 1)                        = 1
+read(0, " ", 1)                         = 1
+write(7, " ", 1)                        = 1
+read(0, "z", 1)                         = 1
+write(7, "z", 1)                        = 1
+read(0, "\n", 1)                        = 1
+write(7, "\n", 1)                       = 1
+read(0, "", 1)                          = 0
+close(6)                                = 0
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=69, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+close(7)                                = 0
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=70, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+exit_group(0)                           = ?
++++ exited with 0 +++
+
+\end{verbatim}
+
+\pagebreak
